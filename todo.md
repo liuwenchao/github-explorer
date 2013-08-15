@@ -1,3 +1,5 @@
-* how to install? checkbox?npm?component?http://browserify.org/?
-* how to display? default page generator + designer's theme.
+* install? checkbox? npm?component?http://browserify.org/?
+* display? default page generator + designer's theme.
 * 
+http://smus.com/how-the-web-should-work/
+http://extensiblewebmanifesto.org/
