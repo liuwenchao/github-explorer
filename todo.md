@@ -3,3 +3,10 @@
 * 
 http://smus.com/how-the-web-should-work/
 http://extensiblewebmanifesto.org/
+
+
+cool and cheap
+
+http://shanereiser.com/readings-and-resources/
+
+http://paulgraham.com/start.html
