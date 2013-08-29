@@ -10,3 +10,5 @@ cool and cheap
 http://shanereiser.com/readings-and-resources/
 
 http://paulgraham.com/start.html
+
+http://www.discourse.org/about/
