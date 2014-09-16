@@ -19,13 +19,9 @@ Runner.prototype.run = function(form) {
 Runner.prototype.render = function(cmd, result) {
   var now = new Date();
   var html = [
-    '<div class="container theme--user-input"><h4>',
+    '<div class="container theme--user-input"><h4 class="themed">$ ',
     cmd,
-    '<span class="themed">',
-    ' [',
-    now.toLocaleTimeString(),
-    ']',
-    '</span></h4><div>',
+    '</h4><div>',
     result,
     '</div></div><hr />'
   ];
