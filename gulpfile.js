@@ -101,6 +101,12 @@ gulp.task('styles', function () {
     .pipe($.size({title: 'styles'}));
 });
 
+gulp.task('scripts', function () {
+    return gulp.src('app/scripts/**/*.coffee')
+        .pipe($.coffee())
+        .pipe(gulp.dest('.tmp/scripts'));
+});
+
 // Scan Your HTML For Assets & Optimize Them
 gulp.task('html', function () {
   var assets = $.useref.assets({searchPath: '{.tmp,app}'});
@@ -141,7 +147,7 @@ gulp.task('html', function () {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 // Watch Files For Changes & Reload
-gulp.task('serve', ['styles'], function () {
+gulp.task('serve', ['styles', 'scripts'], function () {
   browserSync({
     notify: false,
     // Run as an https by uncommenting 'https: true'
@@ -153,7 +159,8 @@ gulp.task('serve', ['styles'], function () {
 
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
-  gulp.watch(['app/scripts/**/*.js'], ['jshint']);
+  gulp.watch(['app/scripts/**/*.coffee'], ['scripts']);
+  gulp.watch(['{.tmp,app}/scripts/**/*.js'], ['jshint']);
   gulp.watch(['app/images/**/*'], reload);
 });
 
@@ -171,7 +178,7 @@ gulp.task('serve:dist', ['default'], function () {
 
 // Build Production Files, the Default Task
 gulp.task('default', ['clean'], function (cb) {
-  runSequence('styles', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
+  runSequence('styles', 'scripts', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
 });
 
 // Run PageSpeed Insights
