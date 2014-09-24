@@ -4,9 +4,9 @@
 // Runner = function(){}();
 function Runner(){
   this.container = document.querySelector('main');
-};
+}
 
-runner = new Runner();
+window.runner = new Runner();
 
 Runner.prototype.run = function(form) {
   if (form.command.value) {
@@ -14,10 +14,10 @@ Runner.prototype.run = function(form) {
     form.command.value = '';
     location.href='#console';
   }
-}
+};
 
 Runner.prototype.render = function(cmd, result) {
-  var now = new Date();
+  // var now = new Date();
   var html = [
     '<div class="container theme--user-input"><h4 class="themed">$ ',
     cmd,
@@ -27,4 +27,4 @@ Runner.prototype.render = function(cmd, result) {
   ];
 
   this.container.insertAdjacentHTML('beforeend', html.join(''));
-}
+};

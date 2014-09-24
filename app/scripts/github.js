@@ -6,7 +6,7 @@ var tree = {
   children: ko.observableArray()
 };
 
-function load_children(url, parent) {
+function loadChildren(url, parent) {
   // parent.children = parent.children || ko.observableArray();
   $.getJSON(url, function(children){
     for (var i = children.length - 1; i >= 0; i--) {
@@ -16,6 +16,7 @@ function load_children(url, parent) {
         link: root + child.path,
         type: child.type,
         path: child.path,
+        postfix: child.type === 'file' ? child.name.substr(child.name.lastIndexOf('.') - child.name.length + 1) : '',
         open: ko.observable(false),
         click: child.type === 'file' ? loadContent : toggleChildren,
         content: child.type === 'file' ? ko.observable() : false,
@@ -23,7 +24,7 @@ function load_children(url, parent) {
       };
       switch(child.type) {
         case 'dir':
-          load_children(file.link, file, false);
+          loadChildren(file.link, file, false);
           break;
         case 'file':
         case 'symlink':
@@ -39,19 +40,21 @@ function load_children(url, parent) {
 function loadContent() {
   if (!this.content()) {
     var file = this;
-    $.getJSON(file.link, function(file_data) {
-      file.content(atob(file_data.content));
+    $.getJSON(file.link, function(fileData) {
+      file.content(atob(fileData.content));
     });
   }
   tree.viewing(this);
   this.open(true);
+  hljs.highlightBlock($('code')[0]);
 }
 
 function toggleChildren() {
   this.open(!this.open());
 }
 
+hljs.initHighlightingOnLoad();
 $(document).ready(function(){
-  load_children(root, tree);
+  loadChildren(root, tree);
   ko.applyBindings(tree, document.body);
 });

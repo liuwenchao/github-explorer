@@ -1,8 +1,8 @@
-exports = module.exports = new Command();
+// exports = module.exports = new Command();
 
-exports.Command = Command;
+// exports.Command = Command;
 
-exports.Option = Option;
+// exports.Option = Option;
 
-function Command(){}
-function Option(){}
+// function Command(){}
+// function Option(){}
