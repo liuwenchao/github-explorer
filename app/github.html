@@ -21,46 +21,32 @@
     <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
     <meta name="msapplication-TileColor" content="#3372DF">
 
-    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
-    <!--
-    <link rel="canonical" href="http://www.example.com/">
-    -->
-
     <!-- Page styles -->
     <!-- build:js scripts/main.min.js -->
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/github.css">
     <!-- endbuild -->
   </head>
   <body>
-    <header>
+    <header></header>
+
+    <nav>
       <input 
         autofocus
-        style="width: 100%; padding: 10px;"
         data-bind="value: name"
-        placeholder="Type repository here, e.g.: torvalds/linux" />
-    </header>
-
-    <nav
-      style="width: 20%; min-height: 100%; float:left;">
-      <h4 data-bind="name"></h4>
+        placeholder="Type Github repository path here and hit Enter key on the keyboard, like: torvalds/linux" />
+      <h2 data-bind="text: name"></h2>
+      <ul data-bind="template: { name: 'tree-template', foreach: children }"></ul>
       <script type="text/html" id="tree-template">
-        <li>
-          <a href="javascript:;" data-bind="text: name, click: click"></a>
-          <div data-bind="if: children().length">
-            <ul data-bind="template: { name: 'tree-template', foreach: children }"></ul>
-          </div>
+        <li data-bind="css: open() ? 'open' : 'closed'">
+          <span data-bind="text: name, click: click, css: type"></span>
+          <ul data-bind="template: { name: 'tree-template', foreach: children }" class="files"></ul>
         </li>
       </script>
-      <ul data-bind="template: { name: 'tree-template', foreach: children }">
-      </ul>
     </nav>
 
-    <main data-bind="with: viewing"
-      style="background-color: grey; min-height: 90%; min-width: 80%; float:left;">
-      <h4 data-bind="text: name"
-        style="background-color: black;"></h4>
-      <div data-bind="text: content">
-      </div>
+    <main data-bind="with: viewing">
+      <h4 data-bind="text: name"></h4>
+      <div data-bind="text: content"></div>
     </main>
 
     <footer>
@@ -70,7 +56,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
     <!-- build:js scripts/build.min.js -->
-    <script src="scripts/index.js"></script>
+    <script src="scripts/github.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->

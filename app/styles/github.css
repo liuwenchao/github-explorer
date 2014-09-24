@@ -1,0 +1,48 @@
+header input {
+    width: 100%; 
+    padding: 10px;
+}
+
+nav {
+    width: 20%; 
+    min-height: 100%; 
+    float:left;
+}
+
+nav ul {
+    padding-left: 10px;
+}
+
+nav li {
+    list-style-type: none;
+    cursor: pointer;
+}
+
+main {
+    background-color: grey; 
+    min-height: 90%; 
+    min-width: 80%; 
+    float:left;
+}
+
+main h4 {
+    background-color: black;
+}
+
+.open .dir:before {
+    content: '\25BE\2002';
+}
+
+.closed .dir:before {
+    content: '\25B8\2002';
+}
+
+.file:before {
+    content: '\2002\2002';
+}
+
+.closed .files,
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
