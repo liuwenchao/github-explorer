@@ -1,18 +1,31 @@
+'use strict';
+
 var tree = {
   repo: ko.observable('liuwenchao/aha-table'),
   viewing: ko.observable(),
-  children: ko.observableArray()
+  children: ko.observableArray(),
+  reload: function() {
+    tree.viewing(undefined);
+    tree.children.removeAll();
+    loadChildren(tree);
+    return false;
+  }
 };
+var ko = window.ko,
+    $ = window.$,
+    hljs = window.hljs
+    ;
+
 
 function loadChildren(parent, url) {
-  var url_root = 'https://api.github.com/repos/' + tree.repo()+'/contents/';
+  var urlRoot = 'https://api.github.com/repos/' + tree.repo()+'/contents/';
   // parent.children = parent.children || ko.observableArray();
-  $.getJSON(url ? url : url_root, function(children){
+  $.getJSON(url ? url : urlRoot, function(children){
     for (var i = children.length - 1; i >= 0; i--) {
       var child = children[i];
       var file = {
         name: child.name, 
-        link: url_root + child.path,
+        link: urlRoot + child.path,
         type: child.type,
         path: child.path,
         open: ko.observable(false),
@@ -28,48 +41,33 @@ function loadChildren(parent, url) {
         case 'file':
         case 'symlink':
         case 'submodule':
+          break;
         default:
           break;
       }
       parent.children.push(file);
-    };
+    }
   })
   .fail(function(){
-    alert('Does not exist, check the path again.');
+    window.alert('Does not exist, check the path again.');
   });
 }
 
-function loadContent() {
-  if (!this.content()) {
-    var file = this;
-    $.getJSON(file.link, function(fileData) {
-      file.content(atob(fileData.content));
-    });
+var loadContent = function() {
+  if (this.content() === undefined) {
+    $.getJSON(this.link, function(fileData) {
+      this.content(atob(fileData.content));
+    }.bind(this));
   }
   tree.viewing(this);
   this.open(true);
   hljs.highlightBlock($('code')[0]);
-}
+};
 
-function toggleChildren() {
+var toggleChildren = function() {
   this.open(!this.open());
-}
+};
 
-function loadRepo(newRepo) {
-  repo = newRepo;
-  tree.viewing(undefined);
-  tree.children.removeAll();
-  loadChildren(tree);
-}
-
-function search(event) {
-  var key = event.key || event.which
-  if (key == 191) {
-    //fetch repos of this user.
-  }
-}
-
-hljs.initHighlightingOnLoad();
 $(document).ready(function(){
   loadChildren(tree);
   ko.applyBindings(tree, document.body);

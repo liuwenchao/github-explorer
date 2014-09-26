@@ -71,13 +71,12 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="hljs.initHighlightingOnLoad();">
     <nav>
-      <form role="search" onsubmit="loadRepo(this.repo.value); return false;">
+      <form role="search" data-bind="submit: reload">
         <input 
           autofocus
           name="repo"
-          onkeyup="search(event);"
           data-bind="value: repo"
           placeholder="Type Github repository path like: torvalds/linux" />
       </form>

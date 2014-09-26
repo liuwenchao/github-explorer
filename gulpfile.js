@@ -181,6 +181,12 @@ gulp.task('default', ['clean'], function (cb) {
   runSequence('styles', 'scripts', ['jshint', 'html', 'images', 'fonts', 'copy'], cb);
 });
 
+gulp.task('deploy', ['default'], function () {
+  return gulp.src('dist')
+    .pipe($.subtree())
+    .pipe($.clean());
+});
+
 // Run PageSpeed Insights
 // Update `url` below to the public URL for your site
 gulp.task('pagespeed', pagespeed.bind(null, {
