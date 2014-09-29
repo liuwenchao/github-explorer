@@ -1,5 +1,11 @@
 'use strict';
 
+var ko = window.ko,
+    $ = window.$,
+    hljs = window.hljs,
+    OAuth = window.OAuth
+    ;
+    
 var tree = {
   repo: ko.observable('liuwenchao/aha-table'),
   viewing: ko.observable(),
@@ -18,10 +24,6 @@ var tree = {
   login: OAuth.login,
   isLoggedIn: ko.observable(false)
 };
-var ko = window.ko,
-    $ = window.$,
-    hljs = window.hljs
-    ;
 
 
 function loadChildren(parent, url) {

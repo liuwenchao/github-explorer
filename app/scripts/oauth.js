@@ -1,6 +1,6 @@
 'use strict';
 
-var OAuth = (function($){
+window.OAuth = (function($){
   var config = {
     auth_url: 'https://github.com/login/oauth/authorize',
     rate_url: 'https://api.github.com/rate_limit',
