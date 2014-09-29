@@ -5,8 +5,10 @@ window.OAuth = (function($){
     auth_url: 'https://github.com/login/oauth/authorize',
     rate_url: 'https://api.github.com/rate_limit',
     access_token_url: 'https://github.com/login/oauth/access_token',
-    client_id: 'fb9ca053a1044ec94e6c', //676ef133540d6b7d98b8
-    client_secret: '7307ea4a063b8da680cd2b83047fc5054702d491', //d3f69322e4954a56ac7d96b28086e3b9df10f801
+    // client_id: 'fb9ca053a1044ec94e6c', 
+    // client_secret: '7307ea4a063b8da680cd2b83047fc5054702d491', 
+    client_id: '676ef133540d6b7d98b8',
+    client_secret: 'd3f69322e4954a56ac7d96b28086e3b9df10f801',
     redirect_url: window.location.href,
     scope: 'repo',
     state: $.cookie('_state'),
