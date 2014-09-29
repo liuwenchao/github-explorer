@@ -56,6 +56,16 @@
           cursor: pointer;
       }
 
+      info {
+          position: fixed;
+          bottom: 0px;
+          color: #666;
+      }
+
+      info.error{
+          color: red;
+      }
+
       main {
           min-height: 1000px; 
           width: 80%; 
@@ -80,6 +90,7 @@
       }
     </style>
   </head>
+
   <body onload="hljs.initHighlightingOnLoad();">
     <nav>
       <form role="search" data-bind="submit: reload">
@@ -89,6 +100,7 @@
           data-bind="value: repo"
           placeholder="Type Github repository path like: torvalds/linux" />
       </form>
+
       <ul data-bind="template: { name: 't', foreach: children }"></ul>
       <script type="text/html" id="t">
         <li data-bind="css: open() ? 'open' : 'closed'">
@@ -96,6 +108,16 @@
           <ul data-bind="template: { name: 't', foreach: children }"></ul>
         </li>
       </script>
+
+      <info data-bind="css: rate.remaining === 0 ? 'error' : ''">
+        API quota: <span data-bind="text: rate.remaining"></span>
+        / <span data-bind="text: rate.limit"></span>
+        Before: <span data-bind="text: rate.reset"></span>
+        <a href="#" data-bind="click: login, ifnot: isLoggedIn" 
+        title="Log into GitHub to increate your API calling limit and visit your private projects.">
+          Login
+        </a>
+      </info>
     </nav>
 
     <main data-bind="with: viewing">
@@ -109,8 +131,10 @@
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script> -->
     <!-- build:js scripts/build.min.js -->
+    <script src="scripts/oauth.js"></script>
     <script src="scripts/github.js"></script>
     <!-- endbuild -->
   </body>
