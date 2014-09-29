@@ -49,7 +49,7 @@ function loadChildren(parent, url) {
     }
   })
   .fail(function(){
-    window.alert('Does not exist, check the path again.');
+    window.alert('Path error or limit is reached for API calling.');
   });
 }
 
