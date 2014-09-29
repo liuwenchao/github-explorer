@@ -26,8 +26,16 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
     <!-- <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css"> -->
     <style>
+      body {
+          background-color: #272822;
+      }
+
+      h1 {
+        color: #fff;
+      }
+
       input {
-          width: 100%; 
+          font-size: 20px;
           padding: 5px;
       }
 
@@ -35,6 +43,7 @@
           width: 19%; 
           height: 100%; 
           position: fixed;
+          background-color: #fff;
           top: 0px;
       }
 
@@ -48,7 +57,7 @@
       }
 
       main {
-          height: 100%; 
+          min-height: 1000px; 
           width: 80%; 
           margin-left: 20%;
       }
@@ -80,11 +89,10 @@
           data-bind="value: repo"
           placeholder="Type Github repository path like: torvalds/linux" />
       </form>
-      <h2 data-bind="text: repo"></h2>
       <ul data-bind="template: { name: 't', foreach: children }"></ul>
       <script type="text/html" id="t">
         <li data-bind="css: open() ? 'open' : 'closed'">
-          <span data-bind="text: name, click: click, css: type"></span>
+          <span data-bind="text: name, click: toggle, css: type"></span>
           <ul data-bind="template: { name: 't', foreach: children }"></ul>
         </li>
       </script>

@@ -29,7 +29,7 @@ function loadChildren(parent, url) {
         type: child.type,
         path: child.path,
         open: ko.observable(false),
-        click: child.type === 'file' ? loadContent : toggleChildren,
+        toggle: child.type === 'file' ? loadContent : toggleChildren,
         content: child.type === 'file' ? ko.observable() : false,
         postfix: child.type === 'file' ? child.name.substr(child.name.lastIndexOf('.') - child.name.length + 1) : '',
         children: ko.observableArray()
