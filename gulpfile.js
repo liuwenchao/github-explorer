@@ -27,6 +27,7 @@ var runSequence = require('run-sequence');
 var browserSync = require('browser-sync');
 var pagespeed = require('psi');
 var reload = browserSync.reload;
+var vinylPaths = require('vinyl-paths');
 
 var AUTOPREFIXER_BROWSERS = [
   'ie >= 10',
@@ -184,7 +185,7 @@ gulp.task('default', ['clean'], function (cb) {
 gulp.task('deploy', ['default'], function () {
   return gulp.src('dist')
     .pipe($.subtree())
-    .pipe($.clean());
+    .pipe(vinylPaths(del));
 });
 
 // Run PageSpeed Insights
