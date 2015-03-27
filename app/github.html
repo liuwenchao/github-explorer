@@ -110,9 +110,9 @@
       </script>
 
       <info data-bind="css: rate.remaining === 0 ? 'error' : ''">
-        API quota: <span data-bind="text: rate.remaining"></span>
+        Quota: <span data-bind="text: rate.remaining"></span>
         / <span data-bind="text: rate.limit"></span>
-        Before: <span data-bind="text: rate.reset"></span>
+        Before <span data-bind="text: rate.reset"></span>
         <a href="#" data-bind="click: login, ifnot: isLoggedIn" 
         title="Provide your Personal Access Token to get more quota.">
           More

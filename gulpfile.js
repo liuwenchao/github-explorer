@@ -83,16 +83,16 @@ gulp.task('fonts', function () {
 gulp.task('styles', function () {
   // For best performance, don't add Sass partials to `gulp.src`
   return gulp.src([
-    'app/styles/*.scss',
+    // 'app/styles/*.scss',
     'app/styles/**/*.css',
-    'app/styles/components/components.scss'
+    // 'app/styles/components/components.scss'
   ])
-    .pipe($.changed('styles', {extension: '.scss'}))
-    .pipe($.rubySass({
-      style: 'expanded',
-      precision: 10
-    }))
-    .on('error', console.error.bind(console))
+    // .pipe($.changed('styles', {extension: '.scss'}))
+    // .pipe($.rubySass({
+    //   style: 'expanded',
+    //   precision: 10
+    // }))
+    // .on('error', console.error.bind(console))
     .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
     .pipe(gulp.dest('.tmp/styles'))
     // Concatenate And Minify Styles
@@ -118,24 +118,25 @@ gulp.task('html', function () {
     // Remove Any Unused CSS
     // Note: If not using the Style Guide, you can delete it from
     // the next line to only include styles your project uses.
-    .pipe($.if('*.css', $.uncss({
-      html: [
-        'app/index.html',
-        'app/styleguide.html'
-      ],
-      // CSS Selectors for UnCSS to ignore
-      ignore: [
-        /.navdrawer-container.open/,
-        /.app-bar.open/
-      ]
-    })))
+    // .pipe($.if('*.css', $.uncss({
+    //   html: [
+    //     'app/index.html',
+    //     'app/styleguide.html'
+    //   ],
+    //   // CSS Selectors for UnCSS to ignore
+    //   ignore: [
+    //     /.navdrawer-container.open/,
+    //     /.app-bar.open/
+    //   ]
+    // })))
     // Concatenate And Minify Styles
     // In case you are still using useref build blocks
     .pipe($.if('*.css', $.csso()))
+    .pipe($.rev())
     .pipe(assets.restore())
     .pipe($.useref())
     // Update Production Style Guide Paths
-    .pipe($.replace('components/components.css', 'components/main.min.css'))
+    // .pipe($.replace('components/components.css', 'components/main.min.css'))
     // Minify Any HTML
     .pipe($.if('*.html', $.minifyHtml()))
     // Output Files
