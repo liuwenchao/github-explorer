@@ -42,17 +42,20 @@ window.OAuth = (function($){
   }
 
   function login() {
-    var new_state = Math.random().toString().substr(2);
-    $.cookie('_state', new_state);
-    location.href = 
-      config.auth_url + 
-      '?' +
-      $.param({
-        client_id: config.client_id,
-        scope: config.scope,
-        state: new_state,
-        redirect_uri: config.redirect_url
-      });
+    // var new_state = Math.random().toString().substr(2);
+    // $.cookie('_state', new_state);
+    // location.href = 
+    //   config.auth_url + 
+    //   '?' +
+    //   $.param({
+    //     client_id: config.client_id,
+    //     scope: config.scope,
+    //     state: new_state,
+    //     redirect_uri: config.redirect_url
+    //   });
+    var access_token = window.prompt('Paste your Personal access token here, generate one at here: https://github.com/settings/applications');
+    $.cookie('_token', access_token);
+    location.reload();
   }
 
   function postLogin(data) {
