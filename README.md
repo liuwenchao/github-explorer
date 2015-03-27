@@ -34,3 +34,8 @@ npm install # see Trouble Shooting if you got error here.
 gulp serve
 ```
 
+## Deployment
+
+```
+gulp deploy
+```
