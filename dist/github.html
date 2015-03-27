@@ -1,0 +1,66 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=description content="Browse files in GitHub"><meta name=viewport content="width=device-width, initial-scale=1"><title>Github Explorer</title><meta name=mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content="Github Explorer"><link rel=stylesheet href=//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css><style>
+      body {
+          background-color: #272822;
+      }
+
+      h1 {
+        color: #fff;
+      }
+
+      input {
+          font-size: 20px;
+          padding: 5px;
+      }
+
+      nav {
+          width: 19%; 
+          height: 100%; 
+          position: fixed;
+          background-color: #fff;
+          top: 0px;
+      }
+
+      nav ul {
+          padding-left: 10px;
+      }
+
+      nav li {
+          list-style-type: none;
+          cursor: pointer;
+      }
+
+      info {
+          position: fixed;
+          bottom: 0px;
+          color: #666;
+      }
+
+      info.error{
+          color: red;
+      }
+
+      main {
+          min-height: 1000px; 
+          width: 80%; 
+          margin-left: 20%;
+      }
+
+      .open .dir:before {
+          content: '\25BE\2002';
+      }
+
+      .closed .dir:before {
+          content: '\25B8\2002';
+      }
+
+      .file:before {
+          content: '\2002\2002';
+      }
+
+      .closed > ul{
+          display: none !important;
+          visibility: hidden;
+      }
+    </style></head><body onload=hljs.initHighlightingOnLoad();><nav><form role=search data-bind="submit: reload"><input autofocus name=repo data-bind="value: repo" placeholder="Type Github repository path like: torvalds/linux"></form><ul data-bind="template: { name: 't', foreach: children }"></ul><script type=text/html id=t><li data-bind="css: open() ? 'open' : 'closed'"> <span data-bind="text: name, click: toggle, css: type"></span> <ul data-bind="template: { name: 't', foreach: children }"></ul> </li></script><info data-bind="css: rate.remaining === 0 ? 'error' : ''">Quota: <span data-bind="text: rate.remaining"></span> / <span data-bind="text: rate.limit"></span> Before <span data-bind="text: rate.reset"></span> <a href=# data-bind="click: login, ifnot: isLoggedIn" title="Provide your Personal Access Token to get more quota.">More</a></info></nav><main data-bind="with: viewing"><h1 data-bind="text: path"></h1><pre>
+        <code class=code data-bind="text: content, css: postfix"></code>
+      </pre></main><script src=//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/knockout/3.1.0/knockout-min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js></script><script src=//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js></script><script src=scripts/build.min.js></script></body></html>

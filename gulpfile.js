@@ -128,8 +128,8 @@ gulp.task('html', function () {
     // Concatenate and minify styles
     // In case you are still using useref build blocks
     // .pipe($.if('*.css', $.csso()))
-    // .pipe(assets.restore())
-    // .pipe($.useref())
+    .pipe(assets.restore())
+    .pipe($.useref())
     // Update production Style Guide paths
     // .pipe($.replace('components/components.css', 'components/main.min.css'))
     // Minify any HTML
