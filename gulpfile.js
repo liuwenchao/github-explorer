@@ -194,7 +194,7 @@ gulp.task('pagespeed', pagespeed.bind(null, {
   // free (no API key) tier. You can use a Google
   // Developer API key if you have one. See
   // http://goo.gl/RkN0vE for info key: 'YOUR_API_KEY'
-  url: 'https://example.com',
+  url: 'https://liuwenchao.github.com/github-explorer/github.html',
   strategy: 'mobile'
 }));
 
