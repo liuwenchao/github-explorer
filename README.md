@@ -4,7 +4,7 @@ Github Explorer
 
 Browse github repositories like in your editor, handy if you just need to browse the codes w/o clone it.
 
-[http://liuwenchao.github.io/github-explorer/github.html](http://liuwenchao.github.io/github-explorer/github.html)
+[Click here to use it](http://liuwenchao.github.io/github-explorer/index.html)
 
 
 ## Development
