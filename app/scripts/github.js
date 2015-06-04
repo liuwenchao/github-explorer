@@ -7,13 +7,16 @@ var ko = window.ko,
     ;
     
 var tree = {
-  repo: ko.observable('liuwenchao/aha-table'),
+  repo: ko.observable(window.location.hash.substr(2)),
   viewing: ko.observable(),
   children: ko.observableArray(),
   reload: function() {
     tree.viewing(undefined);
     tree.children.removeAll();
     loadChildren(tree);
+    if (window.history) {
+      window.history.pushState(null, null, window.location.pathname + '#!' + tree.repo());
+    }
     return false;
   },
   rate: {
@@ -27,6 +30,9 @@ var tree = {
 
 
 function loadChildren(parent, url) {
+  if (!tree.repo()) {
+    return false;
+  }
   var urlRoot = 'https://api.github.com/repos/' + tree.repo()+'/contents/';
   // parent.children = parent.children || ko.observableArray();
   OAuth.request(url ? url : urlRoot)
