@@ -66,7 +66,7 @@ function loadChildren(parent, url) {
   });
 }
 
-var loadContent = function() {
+var loadContent = function(file, event) {
   if (this.content() === undefined) {
     OAuth.request(this.link).success(function(fileData) {
       this.content(atob(fileData.content));
@@ -75,6 +75,8 @@ var loadContent = function() {
     monitorRate();
   }
   tree.viewing(this);
+  $('li').removeClass('viewing');
+  event.target.parentNode.classList.add('selected');
   this.open(true);
   hljs.highlightBlock($('code')[0]);
 };
