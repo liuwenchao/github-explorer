@@ -53,7 +53,8 @@ window.OAuth = (function($){
     //     state: new_state,
     //     redirect_uri: config.redirect_url
     //   });
-    var access_token = window.prompt('Paste your Personal access token here, generate one at here: https://github.com/settings/tokens');
+    window.open('https://github.com/settings/tokens');
+    var access_token = window.prompt('Paste your Personal access token here, generate one in the opened window, or here: https://github.com/settings/tokens');
     $.cookie('_token', access_token);
     location.reload();
   }
