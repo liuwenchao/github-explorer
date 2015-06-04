@@ -20,11 +20,21 @@ var tree = {
     return false;
   },
   rate: {
-    limit: ko.observable(),
-    remaining: ko.observable(),
+    limit: ko.observable(0),
+    remaining: ko.observable(0),
     reset: ko.observable()
   },
-  login: OAuth.login,
+  getToken: function() {
+    tree.showTokenForm(true);
+    if (window.confirm('Please generate a Personal Access Token in the new opened window, and paste in the bottom of the page.')) {
+      window.open('https://github.com/settings/tokens/new');
+    }
+  },
+  showTokenForm: ko.observable(false),
+  login: function(form) {
+    $.cookie('_token', form.token.value);
+    location.reload();
+  },
   isLoggedIn: ko.observable(false)
 };
 

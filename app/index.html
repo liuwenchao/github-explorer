@@ -56,6 +56,7 @@
           position: fixed;
           bottom: 0px;
           color: #666;
+          width: inherit;
       }
 
       info.error{
@@ -113,10 +114,16 @@
         Quota: <span data-bind="text: rate.remaining"></span>
         / <span data-bind="text: rate.limit"></span>
         Before <span data-bind="text: rate.reset"></span>
-        <a href="#" data-bind="click: login, ifnot: isLoggedIn" 
+        <a href="#" data-bind="click: getToken, ifnot: isLoggedIn" 
         title="Provide your Personal Access Token to get more quota.">
           More
         </a>
+        <form data-bind="submit: login, visible: showTokenForm">
+          <input 
+            autofocus
+            name="token"
+            placeholder="Paste generated Token here." />
+        </form>
       </info>
     </nav>
 

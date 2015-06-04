@@ -41,24 +41,6 @@ window.OAuth = (function($){
     });
   }
 
-  function login() {
-    // var new_state = Math.random().toString().substr(2);
-    // $.cookie('_state', new_state);
-    // location.href = 
-    //   config.auth_url + 
-    //   '?' +
-    //   $.param({
-    //     client_id: config.client_id,
-    //     scope: config.scope,
-    //     state: new_state,
-    //     redirect_uri: config.redirect_url
-    //   });
-    window.open('https://github.com/settings/tokens/new');
-    var access_token = window.prompt('Paste your Personal access token here, generate one in the opened new window, and copy it here');
-    $.cookie('_token', access_token);
-    location.reload();
-  }
-
   function postLogin(data) {
     if(data.state === config.state) {
       return $.ajax(config.access_token_url, {
@@ -91,7 +73,6 @@ window.OAuth = (function($){
 
   return {
     config: config,
-    login: login,
     postLogin: postLogin,
     getRate: getRate,
     request: request
