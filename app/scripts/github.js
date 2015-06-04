@@ -70,6 +70,7 @@ var loadContent = function() {
   if (this.content() === undefined) {
     OAuth.request(this.link).success(function(fileData) {
       this.content(atob(fileData.content));
+      hljs.highlightBlock($('code')[0]);
     }.bind(this));
     monitorRate();
   }
