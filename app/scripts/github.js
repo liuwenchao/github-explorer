@@ -75,7 +75,7 @@ var loadContent = function(file, event) {
     monitorRate();
   }
   tree.viewing(this);
-  $('li').removeClass('viewing');
+  $('li').removeClass('selected');
   event.target.parentNode.classList.add('selected');
   this.open(true);
   hljs.highlightBlock($('code')[0]);
