@@ -5,7 +5,7 @@ var ko = window.ko,
     hljs = window.hljs,
     OAuth = window.OAuth
     ;
-    
+
 var tree = {
   repo: ko.observable(window.location.hash.substr(2)),
   viewing: ko.observable(),
@@ -48,10 +48,10 @@ function loadChildren(parent, url) {
   OAuth.request(url ? url : urlRoot)
   .success(function(children){
     monitorRate();
-    for (var i = children.length - 1; i >= 0; i--) {
+    for (var i = 0; i < children.length; i++) {
       var child = children[i];
       var file = {
-        name: child.name, 
+        name: child.name,
         link: urlRoot + child.path,
         type: child.type,
         path: child.path,
@@ -118,7 +118,7 @@ $(document).ready(function(){
   if (window.location.search) {
     var params = window.location.search.substr(1).split('&');
     OAuth.postLogin({
-      code: params[0].split('=')[1], 
+      code: params[0].split('=')[1],
       state: params[1].split('=')[1]
     }).always(function(){
       monitorRate();
