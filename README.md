@@ -19,7 +19,7 @@ sudo apt-get install npm
 # North America: http://npm.strongloop.com/ http://registry.nodejitsu.com/
 # Europe: http://npmjs.eu/
 # Asia: http://registry.npm.taobao.org/
-# sudo npm config set registry "http://registry.npm.taobao.org/" 
+# sudo npm config set registry "http://registry.npm.taobao.org/"
 
 sudo npm install -g npm #update npm
 sudo npm install -g gulp
@@ -30,8 +30,8 @@ Then run:
 ```
 git clone git@github.com:liuwenchao/github-explorer.git # skip this if you have already downloaded/cloned the repository.
 cd github-explorer
-npm install # see Trouble Shooting if you got error here.
-gulp serve
+npm install
+gulp
 ```
 
 ## Deployment

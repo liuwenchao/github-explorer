@@ -1,17 +1,27 @@
 {
-  "node": true,
-  "browser": true,
-  "esnext": true,
   "bitwise": true,
-  "camelcase": false,
-  "curly": true,
+  "browser": true,
+  "curly": false,
+  "devel": true,
   "eqeqeq": true,
+  "es3": true,
+  "freeze": true,
   "immed": true,
-  "indent": 2,
+  "maxdepth": 2,
   "newcap": true,
   "noarg": true,
-  "quotmark": "single",
+  "node": true,
+  "notypeof": true,
+  "trailing": true,
   "undef": true,
-  "unused": "vars",
-  "strict": true
+  "unused": true,
+  "globals": {
+    "angular": false,
+    "backbone": false,
+    "pkg": false,
+    "require": false,
+    "define": false,
+    "$": false,
+    "jquery": false
+  }
 }

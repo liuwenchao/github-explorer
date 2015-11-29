@@ -1,0 +1,7 @@
+{
+  "name": "kowp",
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "knockout": "~3.3"
+  }
+}
