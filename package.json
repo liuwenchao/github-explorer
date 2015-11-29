@@ -53,6 +53,6 @@
     "css-loader": "*",
     "webpack": "*",
     "webpack-dev-server": "*",
-    "vinyl-paths": "*"
+    "vinyl-paths": "^1.0.0"
   }
 }
