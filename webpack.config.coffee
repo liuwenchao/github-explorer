@@ -13,6 +13,7 @@ module.exports =
 
   entry:
     app:          './coffee/app'
+    callback:     './coffee/callback'
 
   output:
     path: path.join(__dirname, 'src')

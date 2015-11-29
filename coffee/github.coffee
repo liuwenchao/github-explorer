@@ -23,6 +23,8 @@ tree =
     if window.confirm 'Please generate a Personal Access Token in the new opened window, and paste in the bottom of the page.'
       window.open 'https://github.com/settings/tokens/new'
   showTokenForm: ko.observable(false)
+  githubLogin: ->
+    location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo'
   login: (form)->
     $.cookie('_token', form.token.value)
     location.reload()
