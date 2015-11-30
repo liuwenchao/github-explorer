@@ -45,6 +45,10 @@
         title="Provide your Personal Access Token to get more quota.">
           More
         </a>
+        <a href="#" data-bind="click: githubLogin, ifnot: isLoggedIn"
+        title="Provide your Personal Access Token to get more quota.">
+          Github Login
+        </a>
         <form data-bind="submit: login, visible: showTokenForm">
           <input
             autofocus
