@@ -43,10 +43,10 @@ gulp.task 'build', ['webpack:build'], ->
   revAll = new $.revAll
     dontRenameFile: [
       /^\/favicon.ico$/g
-      /^\/CNAME/g
-      /^\/index.html/g
-      /^\/callback.html/g
-      /^\/app.html/g
+      /^\/CNAME$/g
+      /^\/index.html$/g
+      /^\/app.html$/g
+      /^\/callback.html$/g
       /^\/robots.txt$/g
     ]
   gulp.src 'src/**'
