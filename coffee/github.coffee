@@ -24,7 +24,7 @@ tree =
       window.open 'https://github.com/settings/tokens/new'
   showTokenForm: ko.observable(false)
   githubLogin: ->
-    location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo'
+    location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo&state=testlocal'
   login: (form)->
     $.cookie('_token', form.token.value)
     location.reload()
