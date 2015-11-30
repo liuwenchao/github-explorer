@@ -45,7 +45,7 @@ loadChildren = (parent, url)->
   .fail ->
     monitorRate()
     tree.isLoggedIn(false)
-    window.alert('Path error or limit is reached for API calling.')
+    window.alert('Limit is reached for API calling.')
 
 loadContent = (file, event)->
   if this.content() == undefined
