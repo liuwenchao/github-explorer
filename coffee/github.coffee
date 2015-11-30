@@ -50,11 +50,11 @@ loadChildren = (parent, url)->
 loadContent = (file, event)->
   if this.content() == undefined
     OAuth.request(this.link).success (fileData)->
-      file.content(window.atob(fileData.content))
-      hljs.highlightBlock($('code')[0])
+      file.content window.atob fileData.content.replace /\n/g,''
+      hljs.highlightBlock $('code')[0]
     monitorRate()
   tree.viewing(this)
-  $('li').removeClass('selected')
+  $('li').removeClass 'selected'
   event.target.parentNode.classList.add('selected')
   this.open(true)
   hljs.highlightBlock($('code')[0])
