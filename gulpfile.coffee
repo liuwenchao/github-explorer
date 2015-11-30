@@ -46,6 +46,7 @@ gulp.task 'build', ['webpack:build'], ->
       /^\/CNAME/g
       /^\/index.html/g
       /^\/callback.html/g
+      /^\/app.html/g
       /^\/robots.txt$/g
     ]
   gulp.src 'src/**'
