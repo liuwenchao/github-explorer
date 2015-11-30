@@ -29,7 +29,7 @@ gulp.task 'webpack-dev-server', (callback) ->
     contentBase: conf.contentBase
     stats:
       colors: true
-  .listen 80, 'localhost', (err) ->
+  .listen 3000, 'localhost', (err) ->
     throw new $.util.PluginError('webpack-dev-server', err) if err
     $.util.log '[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html'
 

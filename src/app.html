@@ -41,20 +41,10 @@
         Quota: <span data-bind="text: rate.remaining"></span>
         / <span data-bind="text: rate.limit"></span>
         Before <span data-bind="text: rate.reset"></span>
-        <a href="#" data-bind="click: getToken, ifnot: isLoggedIn"
-        title="Provide your Personal Access Token to get more quota.">
-          More
-        </a>
         <a href="#" data-bind="click: githubLogin, ifnot: isLoggedIn"
         title="Provide your Personal Access Token to get more quota.">
           Github Login
         </a>
-        <form data-bind="submit: login, visible: showTokenForm">
-          <input
-            autofocus
-            name="token"
-            placeholder="Paste generated Token here." />
-        </form>
       </info>
     </nav>
 

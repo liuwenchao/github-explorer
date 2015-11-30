@@ -18,16 +18,8 @@ tree =
     limit: ko.observable(0)
     remaining: ko.observable(0)
     reset: ko.observable()
-  getToken: ->
-    tree.showTokenForm(true)
-    if window.confirm 'Please generate a Personal Access Token in the new opened window, and paste in the bottom of the page.'
-      window.open 'https://github.com/settings/tokens/new'
-  showTokenForm: ko.observable(false)
-  githubLogin: ->
-    location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo&state=testlocal'
-  login: (form)->
-    $.cookie('_token', form.token.value)
-    location.reload()
+  login: ->
+    location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo'
   isLoggedIn: ko.observable(false)
 
 loadChildren = (parent, url)->
