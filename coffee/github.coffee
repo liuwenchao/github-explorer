@@ -45,10 +45,13 @@ loadChildren = (parent, url)->
         children: ko.observableArray()
       if child.type == 'dir' then loadChildren file, file.link
       parent.children.push file
-  .fail ->
-    monitorRate()
-    tree.isLoggedIn(false)
-    login()
+  .fail (xhr)->
+    switch xhr
+      when 401
+        monitorRate()
+        tree.isLoggedIn(false)
+        login()
+      when 404 then window.alert 'Not found, please verify the repository name'
 
 loadContent = (file, event)->
   if this.content() == undefined
