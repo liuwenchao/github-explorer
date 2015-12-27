@@ -37,14 +37,14 @@
         </li>
       </script>
 
-      <info data-bind="css: rate.remaining === 0 ? 'error' : ''">
-        Quota: <span data-bind="text: rate.remaining"></span>
+      <info data-bind="css: rate.remaining === 0 ? 'error' : ''" title="Quota">
+        <a href="#" title="Manually log into github" data-bind="click: login, ifnot: isLoggedIn"
+        title="Provide your Personal Access Token to get more quota.">
+          G
+        </a>
+        <span data-bind="text: rate.remaining"></span>
         / <span data-bind="text: rate.limit"></span>
         Before <span data-bind="text: rate.reset"></span>
-        <a href="#" data-bind="click: login, ifnot: isLoggedIn"
-        title="Provide your Personal Access Token to get more quota.">
-          Github Login
-        </a>
       </info>
     </nav>
 
