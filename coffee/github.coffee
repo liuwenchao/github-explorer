@@ -3,6 +3,10 @@ $ = require 'jquery'
 hljs = require 'highlightjs'
 OAuth = require 'oauth'
 
+login = ->
+  $.cookie('_callback_url', location.href)
+  location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo'
+
 tree =
   repo: ko.observable(window.location.hash.substr(2))
   viewing: ko.observable()
@@ -18,8 +22,7 @@ tree =
     limit: ko.observable(0)
     remaining: ko.observable(0)
     reset: ko.observable()
-  login: ->
-    location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo'
+  login: login
   isLoggedIn: ko.observable(false)
 
 loadChildren = (parent, url)->
@@ -45,7 +48,7 @@ loadChildren = (parent, url)->
   .fail ->
     monitorRate()
     tree.isLoggedIn(false)
-    window.alert('Limit is reached for API calling.')
+    login()
 
 loadContent = (file, event)->
   if this.content() == undefined

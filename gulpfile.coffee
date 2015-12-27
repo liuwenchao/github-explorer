@@ -31,7 +31,7 @@ gulp.task 'webpack-dev-server', (callback) ->
       colors: true
   .listen 3000, 'localhost', (err) ->
     throw new $.util.PluginError('webpack-dev-server', err) if err
-    $.util.log '[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html'
+    $.util.log '[webpack-dev-server]', 'http://localhost:3000/webpack-dev-server/index.html'
 
 
 ############################################################

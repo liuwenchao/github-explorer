@@ -10,7 +10,7 @@ for param in window.location.search.substr(1).split('&')
 $.getJSON 'http://2.githubpro.com/t.php?callback=?&code='+params.code, (response)->
   console.log response
   $.cookie('_token', response.access_token) if response.access_token
-  window.location.href = '/'
+  window.location.href = decodeURIComponent($.cookie('_callback_url')) ? '/'
 
 
 # <?php
