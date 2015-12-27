@@ -46,12 +46,11 @@ loadChildren = (parent, url)->
       if child.type == 'dir' then loadChildren file, file.link
       parent.children.push file
   .fail (xhr)->
-    switch xhr
-      when 401
-        monitorRate()
-        tree.isLoggedIn(false)
-        login()
-      when 404 then window.alert 'Not found, please verify the repository name'
+    monitorRate()
+    if $.cookie('_token')
+      window.alert 'Not found, please verify the repository name'
+    else
+      login()
 
 loadContent = (file, event)->
   if this.content() == undefined

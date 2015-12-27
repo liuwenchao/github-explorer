@@ -20,6 +20,7 @@ request = (url)->
       'Authorization': 'token ' + $.cookie('_token')
     statusCode:
       401: -> console.error 'Not authorized'
+      403: -> console.error 'Forbidden'
       404: -> console.error('Not authorized or Not Found');
       500: -> console.error('Applicaton Error');
       201: ->
