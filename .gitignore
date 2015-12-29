@@ -3,7 +3,6 @@
 *.orig
 /*.log
 /node_modules
-/bower_components
 /*.sublime-workspace
 /src/*.js
 src/*.js.map

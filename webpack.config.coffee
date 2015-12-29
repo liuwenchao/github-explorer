@@ -40,6 +40,6 @@ module.exports =
 
   resolve:
     extensions: ['', '.webpack.js', '.web.js', '.coffee', '.js', '.scss', '.css']
-    modulesDirectories: ['src', 'coffee', 'styles', 'bower_components', 'node_modules']
+    modulesDirectories: ['src', 'coffee', 'styles', 'node_modules']
 
   plugins: []

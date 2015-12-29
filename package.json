@@ -30,6 +30,7 @@
   "devDependencies": {
     "coffee-loader": "*",
     "coffee-script": "*",
+    "css-loader": "*",
     "del": "^1.2.0",
     "gulp": "*",
     "gulp-autoprefixer": "^2.3.1",
@@ -46,13 +47,16 @@
     "gulp-subtree": "*",
     "gulp-uglify": "^1.2.0",
     "gulp-util": "*",
+    "highlightjs": "^8.7.0",
+    "jquery": "^2.1.4",
+    "jquery.cookie": "^1.4.1",
+    "knockout": "^3.4.0",
     "node-sass": "*",
     "sass-loader": "*",
     "script-loader": "*",
     "style-loader": "*",
-    "css-loader": "*",
+    "vinyl-paths": "^1.0.0",
     "webpack": "*",
-    "webpack-dev-server": "*",
-    "vinyl-paths": "^1.0.0"
+    "webpack-dev-server": "*"
   }
 }
