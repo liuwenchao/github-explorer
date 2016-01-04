@@ -13,6 +13,7 @@ module.exports =
 
   entry:
     app:          './coffee/app'
+    events:       './coffee/events'
     callback:     './coffee/callback'
 
   output:
