@@ -39,3 +39,10 @@ gulp
 ```
 gulp deploy
 ```
+
+## Secret
+
+If OAuth login does not work, you can generate a personal access token in github settings, and open browser console:
+```
+$.cookie('_token', 'PASTE_TOKEN_HERE');
+```
