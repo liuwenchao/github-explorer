@@ -1,4 +1,3 @@
-=======
 Github Explorer
 =====
 
