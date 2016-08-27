@@ -28,7 +28,7 @@ loadChildren = (parent, url)->
   # parent.children = parent.children || ko.observableArray()
   OAuth.request(url ? url : urlRoot)
   .done (children)->
-    monitorRate()
+    refreshQuota()
     for child in children
       file =
         name: child.name
@@ -43,7 +43,7 @@ loadChildren = (parent, url)->
       if child.type == 'dir' then loadChildren file, file.link
       parent.children.push file
   .fail (xhr)->
-    monitorRate()
+    refreshQuota()
     if Cookie.get('_token')
       window.alert 'Not found, please verify the repository name'
     else
@@ -54,7 +54,7 @@ loadContent = (file, event)->
     OAuth.request(this.link).done (fileData)->
       file.content window.atob fileData.content.replace /\n/g,''
       hljs.highlightBlock $('code')[0]
-    monitorRate()
+    refreshQuota()
   tree.viewing(this)
   $('li').removeClass 'selected'
   event.target.parentNode.classList.add('selected')
@@ -64,7 +64,7 @@ loadContent = (file, event)->
 toggleChildren = ->
   this.open !this.open()
 
-monitorRate = ->
+refreshQuota = ->
   OAuth.getRate().done (data)->
     tree.rate.limit(data.rate.limit)
     tree.rate.remaining(data.rate.remaining)
@@ -78,9 +78,9 @@ $(document).ready ->
   #     code: params[0].split('=')[1]
   #     state: params[1]?.split('=')[1]
   #   .always ->
-  #     monitorRate()
+  #     refreshQuota()
   #     loadChildren tree
   # else
-  monitorRate()
+  refreshQuota()
   loadChildren tree
   ko.applyBindings tree, document.body
