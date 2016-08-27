@@ -1,4 +1,5 @@
 $ = require 'jquery'
+Cookie = require 'cookie'
 require 'script!jquery.cookie/jquery.cookie.js'
 
 config =
@@ -11,20 +12,20 @@ config =
   client_secret: 'd3f69322e4954a56ac7d96b28086e3b9df10f801'
   redirect_url: window.location.href
   scope: 'repo'
-  state: $.cookie('_state')
+  state: Cookie.get('_state')
   isLoggedIn: false
 
 request = (url)->
   $.ajax url,
     headers:
-      'Authorization': 'token ' + $.cookie('_token')
+      'Authorization': 'token ' + Cookie.get('_token')
     statusCode:
       401: -> console.error 'Not authorized'
       403: -> console.error 'Forbidden'
       404: -> console.error 'Not authorized or Not Found'
       500: -> console.error 'Applicaton Error'
       201: ->
-      204: -> # ajaxSettings.success();
+      204: -> # ajaxSettings.done();
 
 postLogin = (data)->
   if data.state == config.state
@@ -37,9 +38,9 @@ postLogin = (data)->
         client_secret: config.client_secret
         code: data.code
         redirect_url: location.origin + location.pathname
-      success: (data)->
+      done: (data)->
         config.isLoggedIn = true
-        $.cookie '_token', data.access_token
+        Cookie.set '_token', data.access_token
       error: (data)->
         console.error data
   else
