@@ -20,7 +20,6 @@ tree.reload = ->
   loadChildren(tree)
   if window.history
     window.history.pushState(null, null, window.location.pathname + '#!' + tree.repo())
-  return false
 
 loadChildren = (parent, url)->
   return false if !tree.repo()
