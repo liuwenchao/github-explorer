@@ -4,27 +4,23 @@ hljs = require 'highlightjs'
 OAuth = require 'oauth'
 Cookie = require 'cookie'
 
-login = ->
-  Cookie.set '_callback_url', location.href
-  location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo'
-
 tree =
   repo: ko.observable(window.location.hash.substr(2))
   viewing: ko.observable()
   children: ko.observableArray()
-  reload: ->
-    tree.viewing()
-    tree.children.removeAll()
-    loadChildren(tree)
-    if window.history
-      window.history.pushState(null, null, window.location.pathname + '#!' + tree.repo())
-    return false
   rate:
     limit: ko.observable(0)
     remaining: ko.observable(0)
     reset: ko.observable()
-  login: login
-  isLoggedIn: ko.observable(false)
+  login: OAuth.login
+
+tree.reload = ->
+  tree.viewing(false)
+  tree.children.removeAll()
+  loadChildren(tree)
+  if window.history
+    window.history.pushState(null, null, window.location.pathname + '#!' + tree.repo())
+  return false
 
 loadChildren = (parent, url)->
   return false if !tree.repo()
@@ -51,7 +47,7 @@ loadChildren = (parent, url)->
     if Cookie.get('_token')
       window.alert 'Not found, please verify the repository name'
     else
-      login()
+      OAuth.login()
 
 loadContent = (file, event)->
   if this.content() == undefined
@@ -74,9 +70,6 @@ monitorRate = ->
     tree.rate.remaining(data.rate.remaining)
     reset = new Date(data.rate.reset*1000)
     tree.rate.reset(reset.toLocaleTimeString())
-    tree.isLoggedIn(OAuth.config.isLoggedIn)
-    if data.rate.remaining == 0
-      tree.isLoggedIn(false)
 
 $(document).ready ->
   # if window.location.search

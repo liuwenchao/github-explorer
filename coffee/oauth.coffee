@@ -27,6 +27,10 @@ request = (url)->
       201: ->
       204: -> # ajaxSettings.done();
 
+login = ->
+  Cookie.set '_callback_url', location.href
+  location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo'
+
 postLogin = (data)->
   if data.state == config.state
     $.ajax config.access_token_url,
