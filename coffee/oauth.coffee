@@ -58,3 +58,4 @@ module.exports =
   postLogin: postLogin
   getRate: getRate
   request: request
+  login: login
