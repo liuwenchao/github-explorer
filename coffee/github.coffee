@@ -6,6 +6,7 @@ OAuth = require 'oauth'
 login = ->
   $.cookie('_callback_url', location.href)
   location.href='https://github.com/login/oauth/authorize?client_id=0cc599272ba6f892ca92&scope=user,public_repo'
+  return
 
 tree =
   repo: ko.observable(window.location.hash.substr(2))
