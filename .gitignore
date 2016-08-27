@@ -1,8 +1,0 @@
-.DS_Store
-.idea
-*.orig
-/*.log
-/node_modules
-/*.sublime-workspace
-/src/*.js
-src/*.js.map
