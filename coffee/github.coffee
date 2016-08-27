@@ -69,7 +69,7 @@ refreshQuota = ->
     tree.rate.limit(data.rate.limit)
     tree.rate.remaining(data.rate.remaining)
     reset = new Date(data.rate.reset*1000)
-    tree.rate.reset(reset.toLocaleTimeString())
+    tree.rate.reset('Before ' + reset.toLocaleTimeString())
 
 $(document).ready ->
   # if window.location.search
